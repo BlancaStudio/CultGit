@@ -3,7 +3,7 @@ name: 🎭 Deploy CultGit
 on:
   push:
     paths:
-      - 'tools/culturenesshome/**'  # Solo cuando cambie esto
+      - 'cultureness_home_updated/**'  # Cambiado de 'tools/culturenesshome/**'
     branches: [main]
 
 jobs:
@@ -21,16 +21,16 @@ jobs:
       
       - name: 📦 Install dependencies
         run: npm ci
-        working-directory: ./tools/culturenesshome
+        working-directory: ./cultureness_home_updated  # Cambiado
       
       - name: 🏗️ Build project
         run: npm run build
-        working-directory: ./tools/culturenesshome
+        working-directory: ./cultureness_home_updated  # Cambiado
       
       - name: 🚀 Deploy to CultGit
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.CULTGIT_TOKEN }}  # Token para CultGit
           external_repository: BlancaStudio/CultGit
-          publish_dir: ./tools/culturenesshome/dist
+          publish_dir: ./cultureness_home_updated/dist  # Cambiado
           keep_files: false
